@@ -8,59 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-
-int hello_world() {
-   // printf() displays the string inside quotation
-   printf("Hello, World!\n");
-   
-   return 0;
-}
-
-struct node_type {
-    int value;
-    struct node_type* next_value;
-};
-
-typedef struct node_type node;
-
-
-// Create linked list from values accepted from user
-void create_list(node* head, int size) {
-    int input;
-    node* current = NULL;
-    node* next_node = NULL;
-   
-    for (int i = 0; i < size; i++) {
-
-        printf("Enter a value to input in the list: \n");
-        scanf("%d", &input);
-
-        if (!current) {
-            current = head;
-            current -> value = input;
-            current -> next_value = NULL;
-        }
-        else {
-            next_node = malloc(sizeof(node));
-
-            next_node -> value = input;
-            next_node -> next_value = NULL;
-            current -> next_value = next_node;
-            current = current -> next_value;
-        }
-
-    }
-}
-
-void print_list(node* head) {
-   printf("The list is: ");
-    while (head) {
-        printf("%d, ", head -> value);
-        head = head -> next_value;
-    }
-    printf("\n");
-}
+#include "linked_list.h"
 
 // Print list length
 int get_length(node* head) {
@@ -124,6 +72,7 @@ void add_last(node** current, int value)
    last -> next_value = target_last;
 }
 
+// Add node in the middle
 void insert_node(node* target, int value)
 {
    if (target) {
@@ -152,12 +101,13 @@ void delete_node(node** head, int position) {
 }
 
 int main() {
-   node* head = malloc(sizeof(node));
-   node** head_pointer = &head;
-   create_list(head, 3);
+
+   node* head = create_list(3);
    print_list(head);
+
    insert_node(get_node(head, 1), 5);
    print_list(head);
-   delete_node(head_pointer, 0);
+   
+   delete_node(&head, 0);
    print_list(head);
 }
