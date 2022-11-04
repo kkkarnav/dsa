@@ -45,6 +45,14 @@ void create_list(node* head, int size) {
     }
 }
 
+void print_list(node* head) {
+   printf("The list is: ");
+    while (head) {
+        printf("%d, ", head -> value);
+        head = head -> next_value;
+    }
+}
+
 // Print list length
 int get_length(node* head) {
     int length = 0;
@@ -58,13 +66,6 @@ int get_length(node* head) {
     return length;
 }
 
-// Add node at start
-void add_head(node** head, int value) {
-    node* target_head = malloc(sizeof(node));
-    target_head -> value = value;
-    target_head -> next_value = *head;
-    *head = target_head;
-}
 
 // Get a node from a list
 node* get_node(node* head, int position) {
@@ -83,18 +84,54 @@ node* get_node(node* head, int position) {
 }
 
 
-// Add  a node to  a list
-void insert_node(node** head, int position, int value) {
-
-   node* to_add = malloc(sizeof(node));
-
-   node* current = get_node(*head, position);
-   node* next_node = current -> next_value;
-
-   to_add -> value = value;
-   to_add -> next_value = next_node;
-   current -> next_value = to_add;
+// Add node at start
+void add_head(node** head, int value) {
+    node* target_head = malloc(sizeof(node));
+    target_head -> value = value;
+    target_head -> next_value = *head;
+    *head = target_head;
 }
+
+// Add node at start
+void add_last(node** head, int value) {
+    node* target_head = malloc(sizeof(node));
+    target_head -> value = value;
+    target_head -> next_value = *head;
+    *head = target_head;
+}
+
+void add_last(node** current, int value)
+{
+   node* target_last = malloc(sizeof(node));
+   node* last = *current;
+   
+   target_last -> value = value;
+   target_last -> next_value = NULL;
+   
+   if (!*current)
+   {
+      *current = target_last;
+      return;
+   }
+   
+   while (last -> next_value != NULL)
+   {
+      last = last -> next_value;
+   }
+   
+   last -> next_value = target_last;
+}
+
+void insert_node(node* target, int value)
+{
+   if (target) {
+      node* new_node = malloc(sizeof(node));
+      new_node -> value = value;
+      
+      new_node -> next_value = target -> next_value;
+      target -> next_value = new_node;
+}
+
 
 // Delete a node from a list
 void delete_node(node** head, int position) {
@@ -115,7 +152,7 @@ int main() {
    node* head = malloc(sizeof(node));
    node** head_pointer = &head;
    create_list(head, 3);
-   print_length(head);
-   printf("smth");
-   insert_node(head_pointer, 3, 5);
+   print_list(head);
+   insert_node(head_pointer, 2, 5);
+   print_list(head);
 }
