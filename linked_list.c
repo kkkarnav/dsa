@@ -1,3 +1,11 @@
+// An implementatioin of a linked list in C
+// with functions to: 
+// create the list from user-input values
+// print the list
+// get the length of the list or a node in it
+// add a node at the start, middle or end
+// delete a node from the list
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -51,6 +59,7 @@ void print_list(node* head) {
         printf("%d, ", head -> value);
         head = head -> next_value;
     }
+    printf("\n");
 }
 
 // Print list length
@@ -92,14 +101,7 @@ void add_head(node** head, int value) {
     *head = target_head;
 }
 
-// Add node at start
-void add_last(node** head, int value) {
-    node* target_head = malloc(sizeof(node));
-    target_head -> value = value;
-    target_head -> next_value = *head;
-    *head = target_head;
-}
-
+// Add node at end
 void add_last(node** current, int value)
 {
    node* target_last = malloc(sizeof(node));
@@ -130,6 +132,7 @@ void insert_node(node* target, int value)
       
       new_node -> next_value = target -> next_value;
       target -> next_value = new_node;
+   }
 }
 
 
@@ -153,6 +156,8 @@ int main() {
    node** head_pointer = &head;
    create_list(head, 3);
    print_list(head);
-   insert_node(head_pointer, 2, 5);
+   insert_node(get_node(head, 1), 5);
+   print_list(head);
+   delete_node(head_pointer, 0);
    print_list(head);
 }
