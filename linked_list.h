@@ -7,6 +7,7 @@ struct node_type {
 };
 
 typedef struct node_type node;
+
 // Create linked list from values accepted from user
 node* create_list(int size) {
     int input;
