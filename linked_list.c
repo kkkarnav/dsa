@@ -18,8 +18,6 @@ int get_length(node* head) {
         length++;
     }
 
-    // printf("Length of the list is ");
-    // printf("%d \n", length);
     return length;
 }
 

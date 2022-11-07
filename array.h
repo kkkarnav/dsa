@@ -9,6 +9,7 @@ int* create_array(int size) {
     for (int i = 0; i < size; i++) {
         printf("Enter a value to input in the list: \n");
         scanf("%d", &array[i]);
+        // array[i] = i;
     }
 
 	return array;
@@ -19,7 +20,7 @@ void print_array(int* array, int size) {
    printf("The list is: ");
    
    for (int i = 0; i < size; i++) {
-        printf("%d", array[i]);
+        printf("%d, ", array[i]);
     }
     printf("\n");
 }

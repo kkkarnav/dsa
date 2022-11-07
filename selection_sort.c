@@ -4,7 +4,7 @@
 #include "array.h"
 
 // function to swap the the position of two elements
-void swap(int *a, int *b) {
+void swap(int* a, int* b) {
   int _ = *a;
   *a = *b;
   *b = _;
