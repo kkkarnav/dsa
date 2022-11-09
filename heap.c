@@ -41,39 +41,41 @@ int* heap(int* array, int length) {
 	return array;
 }
 
-int* insert(int* array, int* size, int value) {
-    int* new_array = realloc(array, sizeof(int)*(*size+1));
-    new_array[*size] = value;
-    heap(new_array, *size+1);
-    *size = *size+1;
+int* insert(int* array, int size, int value) {
+    int* new_array = realloc(array, sizeof(int)*(size+1));
+    new_array[size] = value;
+    heap(new_array, size+1);
+    size = size+1;
     return new_array;
 }
 
-int get_minimum(int* array, int size) {
+int pop_minimum(int* array, int size) {
 
     swap(&array[0], &array[(size)-1]);
 
     int minimum = array[size-1];
+    printf("Popped %d \n", minimum);
 
     heapify(array, size-1, 0);
-    size = size - 1;
     return minimum;
 }
 
 void heapsort(int* heap, int size) {
     while(size > 0) {
-        get_minimum(heap, size);
+        pop_minimum(heap, size);
+        size = size - 1;
     }
 }
 
 int main() {
 
-    int size = 3;
+    int size = 5;
 	int* array = create_array(size);
 	print_array(array, size);
 
     array = heap(array, size);
     print_array(array, size);
+    heapsort(array, size);
     
     return 0;
 }
