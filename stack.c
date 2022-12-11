@@ -23,11 +23,11 @@ stack* create_stack(int capacity) {
 }
 
 int is_full(stack* stack_obj) {
-	return stack_obj -> top == stack_obj -> capacity - 1;
+	return (stack_obj -> top == stack_obj -> capacity - 1);
 }
 
 int is_empty(stack* stack_obj) {
-	return stack_obj -> top == -1;
+	return (stack_obj -> top == -1);
 }
 
 void push(stack* stack_obj, int value) {
