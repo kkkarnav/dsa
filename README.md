@@ -26,6 +26,10 @@
 - Fixed Heap
 - AVL
 
-> 9th December:
+> 11th December:
 
-- 
+- Stacks and Queues
+
+> 22th December:
+
+- Skip lists
