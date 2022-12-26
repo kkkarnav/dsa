@@ -33,3 +33,7 @@
 > 22th December:
 
 - Skip lists
+
+> 26th December:
+
+- Splay trees (extra credit)
